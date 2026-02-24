@@ -1,0 +1,392 @@
+mysql> select * from Orders;
++----------+------------+-------------+---------------+------------------+-------------------+----------+------------+--------------+----------------+------------+-----------+
+| Order_ID | Order_Date | Customer_ID | Customer_Name | Product_Category | Product_Name      | Quantity | Unit_Price | Payment_Mode | Store_Location | First_Name | Last_Name |
++----------+------------+-------------+---------------+------------------+-------------------+----------+------------+--------------+----------------+------------+-----------+
+|     1001 | 2026-02-01 | C001        | RAVI KUMAR    | Electronics      | Wireless Mouse    |        2 |     799.00 | UPI          | Bangalore      | RAVI       | KUMAR     |
+|     1002 | 2026-02-02 | C002        | SNEHA REDDY   | Grocery          | Basmati Rice 5kg  |        1 |     650.00 | Credit Card  | Hyderabad      | SNEHA      | REDDY     |
+|     1003 | 2026-02-03 | C003        | ARJUN MEHTA   | Fashion          | Men's T-Shirt     |        3 |     499.00 | Cash         | Chennai        | ARJUN      | MEHTA     |
+|     1004 | 2026-02-04 | C004        | PRIYA SHARMA  | Electronics      | Bluetooth Speaker |        1 |    1499.00 | Debit Card   | Mumbai         | PRIYA      | SHARMA    |
+|     1005 | 2026-02-05 | C005        | KIRAN RAO     | Home & Kitchen   | Mixer Grinder     |        1 |    2499.00 | UPI          | Bangalore      | KIRAN      | RAO       |
+|     1006 | 2026-02-06 | C006        | NEHA VERMA    | Beauty           | Face Cream        |        4 |     299.00 | Credit Card  | Delhi          | NEHA       | VERMA     |
+|     1007 | 2026-02-07 | C007        | RAHUL DAS     | Grocery          | Cooking Oil 1L    |        5 |     180.00 | Cash         | Kolkata        | RAHUL      | DAS       |
+|     1008 | 2026-02-08 | C008        | ANJALI NAIR   | Fashion          | Women's Jeans     |        2 |    1199.00 | UPI          | Kochi          | ANJALI     | NAIR      |
+|     1009 | 2026-02-09 | C009        | SURESH PATEL  | Electronics      | Smartphone        |        1 |   15999.00 | Debit Card   | Ahmedabad      | SURESH     | PATEL     |
+|     1010 | 2026-02-10 | C010        | MEENA IYER    | Home & Kitchen   | Pressure Cooker   |        1 |    1899.00 | Credit Card  | Pune           | MEENA      | IYER      |
++----------+------------+-------------+---------------+------------------+-------------------+----------+------------+--------------+----------------+------------+-----------+
+10 rows in set (0.31 sec)
+
+mysql> SELECT UPPER(Customer_Name) FROM Orders;
++----------------------+
+| UPPER(Customer_Name) |
++----------------------+
+| RAVI KUMAR           |
+| SNEHA REDDY          |
+| ARJUN MEHTA          |
+| PRIYA SHARMA         |
+| KIRAN RAO            |
+| NEHA VERMA           |
+| RAHUL DAS            |
+| ANJALI NAIR          |
+| SURESH PATEL         |
+| MEENA IYER           |
++----------------------+
+10 rows in set (0.04 sec)
+
+mysql> SELECT Customer_Name,LEFT(Product_Name, 5) FROM Orders;
++---------------+-----------------------+
+| Customer_Name | LEFT(Product_Name, 5) |
++---------------+-----------------------+
+| RAVI KUMAR    | Wirel                 |
+| SNEHA REDDY   | Basma                 |
+| ARJUN MEHTA   | Men's                 |
+| PRIYA SHARMA  | Bluet                 |
+| KIRAN RAO     | Mixer                 |
+| NEHA VERMA    | Face                  |
+| RAHUL DAS     | Cooki                 |
+| ANJALI NAIR   | Women                 |
+| SURESH PATEL  | Smart                 |
+| MEENA IYER    | Press                 |
++---------------+-----------------------+
+10 rows in set (0.00 sec)
+
+mysql> select Product_Name,LEFT(Product_Name, 5) FROM Orders;
++-------------------+-----------------------+
+| Product_Name      | LEFT(Product_Name, 5) |
++-------------------+-----------------------+
+| Wireless Mouse    | Wirel                 |
+| Basmati Rice 5kg  | Basma                 |
+| Men's T-Shirt     | Men's                 |
+| Bluetooth Speaker | Bluet                 |
+| Mixer Grinder     | Mixer                 |
+| Face Cream        | Face                  |
+| Cooking Oil 1L    | Cooki                 |
+| Women's Jeans     | Women                 |
+| Smartphone        | Smart                 |
+| Pressure Cooker   | Press                 |
++-------------------+-----------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Customer_Name, LENGTH(Customer_Name) FROM Orders;
++---------------+-----------------------+
+| Customer_Name | LENGTH(Customer_Name) |
++---------------+-----------------------+
+| RAVI KUMAR    |                    10 |
+| SNEHA REDDY   |                    11 |
+| ARJUN MEHTA   |                    11 |
+| PRIYA SHARMA  |                    12 |
+| KIRAN RAO     |                     9 |
+| NEHA VERMA    |                    10 |
+| RAHUL DAS     |                     9 |
+| ANJALI NAIR   |                    11 |
+| SURESH PATEL  |                    12 |
+| MEENA IYER    |                    10 |
++---------------+-----------------------+
+10 rows in set (0.23 sec)
+
+mysql> SELECT Product_Name, REPLACE(Product_Name, 'Rice', 'Premium Rice') FROM Orders;
++-------------------+-----------------------------------------------+
+| Product_Name      | REPLACE(Product_Name, 'Rice', 'Premium Rice') |
++-------------------+-----------------------------------------------+
+| Wireless Mouse    | Wireless Mouse                                |
+| Basmati Rice 5kg  | Basmati Premium Rice 5kg                      |
+| Men's T-Shirt     | Men's T-Shirt                                 |
+| Bluetooth Speaker | Bluetooth Speaker                             |
+| Mixer Grinder     | Mixer Grinder                                 |
+| Face Cream        | Face Cream                                    |
+| Cooking Oil 1L    | Cooking Oil 1L                                |
+| Women's Jeans     | Women's Jeans                                 |
+| Smartphone        | Smartphone                                    |
+| Pressure Cooker   | Pressure Cooker                               |
++-------------------+-----------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT TRIM(Customer_Name) FROM Orders;
++---------------------+
+| TRIM(Customer_Name) |
++---------------------+
+| RAVI KUMAR          |
+| SNEHA REDDY         |
+| ARJUN MEHTA         |
+| PRIYA SHARMA        |
+| KIRAN RAO           |
+| NEHA VERMA          |
+| RAHUL DAS           |
+| ANJALI NAIR         |
+| SURESH PATEL        |
+| MEENA IYER          |
++---------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT First_Name,Last_Name, CONCAT(First_Name, ' - ', Last_Name) AS Full_Name from Orders;
++------------+-----------+----------------+
+| First_Name | Last_Name | Full_Name      |
++------------+-----------+----------------+
+| RAVI       | KUMAR     | RAVI - KUMAR   |
+| SNEHA      | REDDY     | SNEHA - REDDY  |
+| ARJUN      | MEHTA     | ARJUN - MEHTA  |
+| PRIYA      | SHARMA    | PRIYA - SHARMA |
+| KIRAN      | RAO       | KIRAN - RAO    |
+| NEHA       | VERMA     | NEHA - VERMA   |
+| RAHUL      | DAS       | RAHUL - DAS    |
+| ANJALI     | NAIR      | ANJALI - NAIR  |
+| SURESH     | PATEL     | SURESH - PATEL |
+| MEENA      | IYER      | MEENA - IYER   |
++------------+-----------+----------------+
+10 rows in set (0.07 sec)
+
+mysql> SELECT * FROM Orders WHERE Customer_Name LIKE 'A%';
++----------+------------+-------------+---------------+------------------+---------------+----------+------------+--------------+----------------+------------+-----------+
+| Order_ID | Order_Date | Customer_ID | Customer_Name | Product_Category | Product_Name  | Quantity | Unit_Price | Payment_Mode | Store_Location | First_Name | Last_Name |
++----------+------------+-------------+---------------+------------------+---------------+----------+------------+--------------+----------------+------------+-----------+
+|     1003 | 2026-02-03 | C003        | ARJUN MEHTA   | Fashion          | Men's T-Shirt |        3 |     499.00 | Cash         | Chennai        | ARJUN      | MEHTA     |
+|     1008 | 2026-02-08 | C008        | ANJALI NAIR   | Fashion          | Women's Jeans |        2 |    1199.00 | UPI          | Kochi          | ANJALI     | NAIR      |
++----------+------------+-------------+---------------+------------------+---------------+----------+------------+--------------+----------------+------------+-----------+
+2 rows in set (0.05 sec)
+
+mysql> SELECT  Customer_Name from Orders WHERE Customer_Name LIKE 'A%';
++---------------+
+| Customer_Name |
++---------------+
+| ARJUN MEHTA   |
+| ANJALI NAIR   |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT SUBSTRING_INDEX(Email_ID, '@', -1) FROM Customers;
+ERROR 1146 (42S02): Table 'sql_practice.customers' doesn't exist
+mysql> ALTER TABLE Orders ADD COLUMN Email_ID VARCHAR(150);
+Query OK, 0 rows affected (4.90 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE Orders SET Email_ID = CONCAT(REPLACE(LOWER(First_Name), ' ', '.'), '@gmail.com');
+Query OK, 10 rows affected (0.28 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+mysql> select Email_ID from Orders;
++------------------+
+| Email_ID         |
++------------------+
+| ravi@gmail.com   |
+| sneha@gmail.com  |
+| arjun@gmail.com  |
+| priya@gmail.com  |
+| kiran@gmail.com  |
+| neha@gmail.com   |
+| rahul@gmail.com  |
+| anjali@gmail.com |
+| suresh@gmail.com |
+| meena@gmail.com  |
++------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Email_ID, SUBSTRING_INDEX(Email_ID, '@', -1) AS Domain FROM Orders;
++------------------+-----------+
+| Email_ID         | Domain    |
++------------------+-----------+
+| ravi@gmail.com   | gmail.com |
+| sneha@gmail.com  | gmail.com |
+| arjun@gmail.com  | gmail.com |
+| priya@gmail.com  | gmail.com |
+| kiran@gmail.com  | gmail.com |
+| neha@gmail.com   | gmail.com |
+| rahul@gmail.com  | gmail.com |
+| anjali@gmail.com | gmail.com |
+| suresh@gmail.com | gmail.com |
+| meena@gmail.com  | gmail.com |
++------------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Email_ID, LOCATE('@', Email_ID) AS At_Symbol_Position FROM Orders;
++------------------+--------------------+
+| Email_ID         | At_Symbol_Position |
++------------------+--------------------+
+| ravi@gmail.com   |                  5 |
+| sneha@gmail.com  |                  6 |
+| arjun@gmail.com  |                  6 |
+| priya@gmail.com  |                  6 |
+| kiran@gmail.com  |                  6 |
+| neha@gmail.com   |                  5 |
+| rahul@gmail.com  |                  6 |
+| anjali@gmail.com |                  7 |
+| suresh@gmail.com |                  7 |
+| meena@gmail.com  |                  6 |
++------------------+--------------------+
+10 rows in set (0.03 sec)
+
+mysql> SELECT REVERSE(Product_Name) FROM Orders;
++-----------------------+
+| REVERSE(Product_Name) |
++-----------------------+
+| esuoM sseleriW        |
+| gk5 eciR itamsaB      |
+| trihS-T s'neM         |
+| rekaepS htooteulB     |
+| rednirG rexiM         |
+| maerC ecaF            |
+| L1 liO gnikooC        |
+| snaeJ s'nemoW         |
+| enohptramS            |
+| rekooC erusserP       |
++-----------------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT CONCAT(UPPER(LEFT(Product_Name, 1)), LOWER(SUBSTRING(Product_Name, 2))) FROM Orders;
++-------------------------------------------------------------------------+
+| CONCAT(UPPER(LEFT(Product_Name, 1)), LOWER(SUBSTRING(Product_Name, 2))) |
++-------------------------------------------------------------------------+
+| Wireless mouse                                                          |
+| Basmati rice 5kg                                                        |
+| Men's t-shirt                                                           |
+| Bluetooth speaker                                                       |
+| Mixer grinder                                                           |
+| Face cream                                                              |
+| Cooking oil 1l                                                          |
+| Women's jeans                                                           |
+| Smartphone                                                              |
+| Pressure cooker                                                         |
++-------------------------------------------------------------------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT CONCAT(UPPER(LEFT(Product_Name, 1)), LOWER(SUBSTRING(Product_Name))) FROM Orders as Capitalize;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '))) FROM Orders as Capitalize' at line 1
+mysql> SELECT CONCAT(UPPER(LEFT(Product_Name, 1)), LOWER(SUBSTRING(Product_Name,2))) FROM Orders as Capitalize;
++------------------------------------------------------------------------+
+| CONCAT(UPPER(LEFT(Product_Name, 1)), LOWER(SUBSTRING(Product_Name,2))) |
++------------------------------------------------------------------------+
+| Wireless mouse                                                         |
+| Basmati rice 5kg                                                       |
+| Men's t-shirt                                                          |
+| Bluetooth speaker                                                      |
+| Mixer grinder                                                          |
+| Face cream                                                             |
+| Cooking oil 1l                                                         |
+| Women's jeans                                                          |
+| Smartphone                                                             |
+| Pressure cooker                                                        |
++------------------------------------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT RIGHT(CAST(Order_ID AS CHAR), 3) FROM Orders;
++----------------------------------+
+| RIGHT(CAST(Order_ID AS CHAR), 3) |
++----------------------------------+
+| 001                              |
+| 002                              |
+| 003                              |
+| 004                              |
+| 005                              |
+| 006                              |
+| 007                              |
+| 008                              |
+| 009                              |
+| 010                              |
++----------------------------------+
+10 rows in set (0.13 sec)
+
+mysql> SELECT Customer_Name,LENGTH(REPLACE(Customer_Name,'A','')) as Count_of_A from Orders;
++---------------+------------+
+| Customer_Name | Count_of_A |
++---------------+------------+
+| RAVI KUMAR    |          8 |
+| SNEHA REDDY   |         10 |
+| ARJUN MEHTA   |          9 |
+| PRIYA SHARMA  |          9 |
+| KIRAN RAO     |          7 |
+| NEHA VERMA    |          8 |
+| RAHUL DAS     |          7 |
+| ANJALI NAIR   |          8 |
+| SURESH PATEL  |         11 |
+| MEENA IYER    |          9 |
++---------------+------------+
+10 rows in set (3.37 sec)
+
+mysql> SELECT LENGTH(Customer_Name) - LENGTH(REPLACE(UPPER(Customer_Name),'A','')) as Count_of_A from Orders;
++------------+
+| Count_of_A |
++------------+
+|          2 |
+|          1 |
+|          2 |
+|          3 |
+|          2 |
+|          2 |
+|          2 |
+|          3 |
+|          1 |
+|          1 |
++------------+
+10 rows in set (0.22 sec)
+
+mysql> SELECT Customer_Name, LENGTH(Customer_Name) - LENGTH(REPLACE(UPPER(Customer_Name),'A','')) as Count_of_A from Orders;
++---------------+------------+
+| Customer_Name | Count_of_A |
++---------------+------------+
+| RAVI KUMAR    |          2 |
+| SNEHA REDDY   |          1 |
+| ARJUN MEHTA   |          2 |
+| PRIYA SHARMA  |          3 |
+| KIRAN RAO     |          2 |
+| NEHA VERMA    |          2 |
+| RAHUL DAS     |          2 |
+| ANJALI NAIR   |          3 |
+| SURESH PATEL  |          1 |
+| MEENA IYER    |          1 |
++---------------+------------+
+10 rows in set (0.03 sec)
+
+mysql> SELECT * FROM Orders WHERE LOWER(Product_Category) = LOWER('electronics');
++----------+------------+-------------+---------------+------------------+-------------------+----------+------------+--------------+----------------+------------+-----------+------------------+
+| Order_ID | Order_Date | Customer_ID | Customer_Name | Product_Category | Product_Name      | Quantity | Unit_Price | Payment_Mode | Store_Location | First_Name | Last_Name | Email_ID         |
++----------+------------+-------------+---------------+------------------+-------------------+----------+------------+--------------+----------------+------------+-----------+------------------+
+|     1001 | 2026-02-01 | C001        | RAVI KUMAR    | Electronics      | Wireless Mouse    |        2 |     799.00 | UPI          | Bangalore      | RAVI       | KUMAR     | ravi@gmail.com   |
+|     1004 | 2026-02-04 | C004        | PRIYA SHARMA  | Electronics      | Bluetooth Speaker |        1 |    1499.00 | Debit Card   | Mumbai         | PRIYA      | SHARMA    | priya@gmail.com  |
+|     1009 | 2026-02-09 | C009        | SURESH PATEL  | Electronics      | Smartphone        |        1 |   15999.00 | Debit Card   | Ahmedabad      | SURESH     | PATEL     | suresh@gmail.com |
++----------+------------+-------------+---------------+------------------+-------------------+----------+------------+--------------+----------------+------------+-----------+------------------+
+3 rows in set (0.61 sec)
+
+mysql> SELECT * FROM Orders WHERE Customer_Name LIKE '%UPPER(kumar)%';
+Empty set (0.25 sec)
+
+mysql> SELECT * FROM Orders WHERE Customer_Name LIKE '%Kumar%';
++----------+------------+-------------+---------------+------------------+----------------+----------+------------+--------------+----------------+------------+-----------+----------------+
+| Order_ID | Order_Date | Customer_ID | Customer_Name | Product_Category | Product_Name   | Quantity | Unit_Price | Payment_Mode | Store_Location | First_Name | Last_Name | Email_ID       |
++----------+------------+-------------+---------------+------------------+----------------+----------+------------+--------------+----------------+------------+-----------+----------------+
+|     1001 | 2026-02-01 | C001        | RAVI KUMAR    | Electronics      | Wireless Mouse |        2 |     799.00 | UPI          | Bangalore      | RAVI       | KUMAR     | ravi@gmail.com |
++----------+------------+-------------+---------------+------------------+----------------+----------+------------+--------------+----------------+------------+-----------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUBSTRING(Product_Name, 1, LOCATE(' ', Product_Name)) FROM Orders;
++-------------------------------------------------------+
+| SUBSTRING(Product_Name, 1, LOCATE(' ', Product_Name)) |
++-------------------------------------------------------+
+| Wireless                                              |
+| Basmati                                               |
+| Men's                                                 |
+| Bluetooth                                             |
+| Mixer                                                 |
+| Face                                                  |
+| Cooking                                               |
+| Women's                                               |
+|                                                       |
+| Pressure                                              |
++-------------------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT LPAD(Order_ID, 6, '0') FROM Orders AS LPAD;
++------------------------+
+| LPAD(Order_ID, 6, '0') |
++------------------------+
+| 001001                 |
+| 001002                 |
+| 001003                 |
+| 001004                 |
+| 001005                 |
+| 001006                 |
+| 001007                 |
+| 001008                 |
+| 001009                 |
+| 001010                 |
++------------------------+
+10 rows in set (0.64 sec)
+
+mysql> notee;
